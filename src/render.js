@@ -26,6 +26,16 @@ stopBtn.onclick = e => {
   startBtn.innerText = 'Start';
 };
 
+window.onload = setDefaultVideoSource;
+// Set default video source
+async function setDefaultVideoSource() {
+  const inputSources = await desktopCapturer.getSources({
+    types: ['window', 'screen']
+  });
+  selectSource(inputSources[0])
+}
+
+
 const videoSelectBtn = document.getElementById('videoSelectBtn');
 videoSelectBtn.onclick = getVideoSources;
 
